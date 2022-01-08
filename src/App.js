@@ -7,11 +7,21 @@ import axios from 'axios';
 
 class App extends Component {
   
+  state = {
+    locationObject: {
+      name: "Seattle",
+      age: "Old"
+    },
+    savedCity: ''
+  }
+
   render() {
     return(
       <div>
         <SearchForm/>
-        <DisplayInfo />
+        <DisplayInfo 
+          locationObject={this.state.locationObject}
+        />
       </div>
     )
   }

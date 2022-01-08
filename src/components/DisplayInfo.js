@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-const DisplayInfo = () => {
+const DisplayInfo = ({locationObject}) => {
     return(
-        <p>Info</p>
+        <p>{locationObject.name}</p>
     );
 }
 
