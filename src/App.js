@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Image, Form, Button } from 'react-bootstrap';
 import SearchForm from './components/SearchForm.js';
 import DisplayInfo from './components/DisplayInfo'
 import './App.css';
