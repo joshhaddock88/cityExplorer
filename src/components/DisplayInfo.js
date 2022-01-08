@@ -2,7 +2,10 @@ import React, { Component } from 'react';
 
 const DisplayInfo = ({locationObject}) => {
     return(
-        <p>{locationObject.name}</p>
+        <div>
+            <p>Longitude: {locationObject.lon}</p>
+            <p>Latitude: {locationObject.lat}</p>
+        </div>
     );
 }
 
