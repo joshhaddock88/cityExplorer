@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Form, Button } from 'react-bootstrap';
 
-const SearchBar = () => {
+const SearchForm = () => {
     return (
         <div>
             <Form>
@@ -18,4 +18,4 @@ const SearchBar = () => {
     )
 }
 
-export default SearchBar;
+export default SearchForm;
