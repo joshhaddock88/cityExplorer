@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import SearchForm from './components/SearchForm.js';
 import DisplayInfo from './components/DisplayInfo';
 import Map from './components/Map.js';
+import { Alert } from 'react-bootstrap';
 import './App.css';
 import axios from 'axios';
 
@@ -10,10 +11,13 @@ class App extends Component {
   state = {
     locationObject: {},
     savedCity: '',
-    mapURL: ``
+    mapURL: ``,
+    errorMessage: ``,
+    showAlert: false
   }
 
-  getLocation = async () => {
+  getLocation = async (e) => {
+    try{
     const key = process.env.REACT_APP_LOCATION_KEY;
     const url = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${this.state.savedCity}&format=json`;
     console.log("URL: ", url);
@@ -22,6 +26,12 @@ class App extends Component {
     let cityObject = res.data[0];
     this.setState({locationObject: cityObject});
     this.setState({mapURL: `https://maps.locationiq.com/v3/staticmap?key=${key}&center=${cityObject.lat},${cityObject.lon}&zoom=12`})
+    } catch (err) {
+      this.setState({
+        errorMessage: err.message,
+        showAlert: true
+      })
+    }
   };
 
   searchedCity = (event) => {
@@ -36,6 +46,9 @@ class App extends Component {
           getLocation={this.getLocation}
           searchedCity={this.searchedCity}
         />
+        <Alert variant='danger' onClose={() => this.setState({showAlert: false})} show={this.state.showAlert} dismissible>
+          {this.state.errorMessage}
+        </Alert>
         <DisplayInfo 
           locationObject={this.state.locationObject}
         />
