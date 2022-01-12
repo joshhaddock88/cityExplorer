@@ -1,9 +1,11 @@
 import React from 'react';
 import { Image } from 'react-bootstrap';
 
-const Map = () => {
+const Map = (mapURL) => {
     return(
-        <Image></Image>
+        <div>
+            <Image src={mapURL} alt=''></Image>
+        </div>
     );
 }
 

@@ -19,7 +19,9 @@ class App extends Component {
     console.log("URL: ", url);
     const res = await axios.get(url);
     console.log("Response Object: ", res.data[0]);
-    this.setState({locationObject: res.data[0]})
+    let cityObject = res.data[0];
+    this.setState({locationObject: cityObject});
+    this.setState({mapURL: `https://maps.locationiq.com/v3/staticmap?key=${key}&center=${cityObject.lat},${cityObject.lon}&zoom=12`})
   };
 
   searchedCity = (event) => {
@@ -37,7 +39,9 @@ class App extends Component {
         <DisplayInfo 
           locationObject={this.state.locationObject}
         />
-        <Map/>
+        <Map
+          mapURL={this.state.mapURL}
+        />
       </div>
     )
   }
