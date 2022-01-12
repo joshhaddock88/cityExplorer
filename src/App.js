@@ -10,7 +10,7 @@ class App extends Component {
   state = {
     locationObject: {},
     savedCity: '',
-    mapURL: ''
+    mapURL: ``
   }
 
   getLocation = async () => {
@@ -31,7 +31,7 @@ class App extends Component {
 
   render() {
     return(
-      <div>
+      <div className='App'>
         <SearchForm
           getLocation={this.getLocation}
           searchedCity={this.searchedCity}
